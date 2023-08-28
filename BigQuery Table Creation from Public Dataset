@@ -57,6 +57,7 @@ WHERE
   -- Getting rid of NULL rate_code and payment_type values
   AND rate_code IS NOT NULL
   AND payment_type IS NOT NULL 
-  --There could be negative total_amount values because there is a 'Dispute' payment_type
-  AND total_amount IS NOT NULL 
+  
+  AND total_amount IS NOT NULL AND total_amount >0
+
 ORDER BY pickup_datetime;
