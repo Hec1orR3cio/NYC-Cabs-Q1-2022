@@ -3,6 +3,8 @@ CREATE OR REPLACE TABLE nyc_cabs_project.yellow_trips_Q1_2022
  OPTIONS(
    description="A extract of the cleaned data from public dataset of new_york_taxi_trips.tlc_yellow_trips for Q1 2022"
  ) AS
+#standardSQL
+
 SELECT 
 pickup_datetime, 
 pickup_location_id,
@@ -58,6 +60,7 @@ WHERE
   AND rate_code IS NOT NULL
   AND payment_type IS NOT NULL 
   
-  AND total_amount IS NOT NULL AND total_amount >0
+  AND total_amount IS NOT NULL 
+  AND tip_amount >= 0
 
 ORDER BY pickup_datetime;
